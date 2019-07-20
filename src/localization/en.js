@@ -1,8 +1,13 @@
 export default {
   login: 'Login',
+  signUp: 'Sign Up',
   loading: 'Loading',
   password: 'Password',
+  passwordConfirmation: 'Password Confirmation',
   email: 'Email',
+  username: 'Username',
+  firstName: 'First Name',
+  lastName: 'Last name',
   home: 'Home',
   homeMessage: 'Welcome',
   profile: 'Profile',

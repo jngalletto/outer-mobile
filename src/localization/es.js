@@ -1,0 +1,16 @@
+export default {
+  login: 'Iniciar sesión',
+  signUp: 'Registrarse',
+  loading: 'Cargando',
+  password: 'Contraseña',
+  passwordConfirmation: 'Confirmar contraseña',
+  email: 'Email',
+  username: 'Usuario',
+  firstName: 'Nombre',
+  lastName: 'Apellido',
+  home: 'Home',
+  homeMessage: 'Bienvenido',
+  profile: 'Perfil',
+  profileMessage: 'Y esta tiena una Nav, pero color diferente al login.',
+  logout: 'Cerrar sesión',
+};
