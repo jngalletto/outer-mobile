@@ -1,4 +1,4 @@
-package com.rntemplate;
+package com.outer.outerapp;
 
 import android.app.Application;
 
