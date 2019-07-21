@@ -1,6 +1,8 @@
 export default {
   login: 'Iniciar sesión',
-  signUp: 'Registrarse',
+  tryLogin: 'Ya tengo cuenta',
+  signUp: 'Registrarme',
+  createAccount: 'Registrarme',
   loading: 'Cargando',
   password: 'Contraseña',
   passwordConfirmation: 'Confirmar contraseña',

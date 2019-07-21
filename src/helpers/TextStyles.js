@@ -4,7 +4,7 @@ import Colors from '../helpers/Colors';
 const styles = StyleSheet.create({
   lightTitle: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '600',
     color: Colors.white,
   },
   textField: {
@@ -13,7 +13,13 @@ const styles = StyleSheet.create({
   },
   fieldTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
+    color: Colors.primary,
+  },
+  textLink: {
+    fontSize: 14,
+    fontWeight: '400',
+    marginTop: 20,
     color: Colors.primary,
   },
   error: {

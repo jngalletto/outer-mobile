@@ -39,6 +39,7 @@ function SignUp(props) {
   const firstNameChanged = useCallback(value => setFirstName(value), []);
   const lastNameChanged = useCallback(value => setLastName(value), []);
   const usernameChanged = useCallback(value => setUsername(value), []);
+  const navigateToLogin = () => props.navigation.navigate('Login');
 
   useEffect(() => {
     if (user !== null) {
@@ -104,6 +105,9 @@ function SignUp(props) {
           onPress={signUpUser}
           title={isLoading ? strings.loading : strings.signUp}
         />
+        <Text style={TextStyles.textLink} onPress={navigateToLogin}>
+          {strings.tryLogin}
+        </Text>
       </View>
     </View>
   );

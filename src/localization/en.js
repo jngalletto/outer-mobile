@@ -1,6 +1,8 @@
 export default {
   login: 'Login',
-  signUp: 'Sign Up',
+  tryLogin: 'Try login',
+  signUp: 'Create account',
+  createAccount: 'Create new account',
   loading: 'Loading',
   password: 'Password',
   passwordConfirmation: 'Password Confirmation',
