@@ -7,10 +7,8 @@ class UserController {
 
   signUp = async (email, password, firstName, lastName, username) => {
     try {
-      const result = await httpClient.post({
-        url: `${this.basePath}/users`,
-        method: 'POST',
-        data: {
+      const result = await httpClient.post(`${this.basePath}`, {
+        user: {
           email,
           password,
           firstName,

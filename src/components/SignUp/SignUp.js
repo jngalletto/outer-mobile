@@ -28,13 +28,13 @@ function SignUp(props) {
   const [username, setUsername] = useState('');
 
   const user = useSelector(state => getUser(state));
-  const isLoading = useSelector(state => isLoadingSelector([actionTypes.LOGIN], state));
-  const errors = useSelector(state => errorsSelector([actionTypes.LOGIN], state));
+  const isLoading = useSelector(state => isLoadingSelector([actionTypes.SIGN_UP], state));
+  const errors = useSelector(state => errorsSelector([actionTypes.SIGN_UP], state));
 
   const dispatch = useDispatch();
   const signUpUser = useCallback(() => dispatch(signUp(email, password, firstName, lastName, username)), [email, password, firstName, lastName, username, dispatch]);
   const passwordChanged = useCallback(value => setPassword(value), []);
-  const passwordConfirmationChanged = useCallback(value => setPassword(value), []);
+  const passwordConfirmationChanged = useCallback(value => setPasswordConfirmation(value), []);
   const emailChanged = useCallback(value => setEmail(value), []);
   const firstNameChanged = useCallback(value => setFirstName(value), []);
   const lastNameChanged = useCallback(value => setLastName(value), []);

@@ -13,7 +13,7 @@ import getUser from 'selectors/UserSelectors';
 
 function Home() {
   const user = useSelector(state => getUser(state));
-  const getMessage = useCallback(() => `${strings.homeMessage} ${user && user.name}`, [user]);
+  const getMessage = useCallback(() => `${strings.homeMessage} ${user && user.username}`, [user]);
 
   return (
     <View style={styles.container}>
