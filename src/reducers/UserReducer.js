@@ -15,6 +15,15 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.user,
       };
+    case actionTypes.SIGN_UP_REQUEST:
+      return {
+        ...state,
+      };
+    case actionTypes.SIGN_UP_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+      };
     case actionTypes.LOGOUT:
       return initialState;
     default:

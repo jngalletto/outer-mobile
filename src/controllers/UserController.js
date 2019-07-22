@@ -1,8 +1,26 @@
-// import httpClient from './HttpClient';
+import httpClient from './HttpClient';
 
 class UserController {
   constructor() {
     this.basePath = '/users';
+  }
+
+  signUp = async (email, password, firstName, lastName, username) => {
+    try {
+      const result = await httpClient.post(`${this.basePath}`, {
+        user: {
+          email,
+          password,
+          firstName,
+          lastName,
+          username,
+        },
+      });
+      return result.data.user;
+      // Data is the object exposes by axios for the response json
+    } catch (error) {
+      return error;
+    }
   }
 
   login = async (email, password) =>

@@ -31,6 +31,7 @@ function Login(props) {
   const loginUser = useCallback(() => dispatch(login(email, password)), [email, password, dispatch]);
   const passwordChanged = useCallback(value => setPassword(value), []);
   const emailChanged = useCallback(value => setEmail(value), []);
+  const navigateToSignUp = () => props.navigation.navigate('SignUp');
 
   useEffect(() => {
     if (user !== null) {
@@ -63,6 +64,9 @@ function Login(props) {
           onPress={loginUser}
           title={isLoading ? strings.loading : strings.login}
         />
+        <Text style={TextStyles.textLink} onPress={navigateToSignUp}>
+          {strings.createAccount}
+        </Text>
       </View>
     </View>
   );

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import humps from 'humps';
 import { API_URL } from 'react-native-dotenv';
 
 /*
@@ -7,9 +8,27 @@ import { API_URL } from 'react-native-dotenv';
   timeouts and middleware used for each request.
 */
 const client = axios.create({
-  baseURL: API_URL,
+  baseURL: 'http://127.0.0.1:3000/api/v1',
+  transformResponse: [
+    ...axios.defaults.transformResponse,
+    data => humps.camelizeKeys(data),
+  ],
+  transformRequest: [
+    data => humps.decamelizeKeys(data),
+    ...axios.defaults.transformRequest,
+  ],
   timeout: 100000,
   headers: { 'content-type': 'application/json' },
+});
+
+client.interceptors.request.use((request) => {
+  console.log('Starting Request', request);
+  return request;
+});
+
+client.interceptors.response.use((response) => {
+  console.log('Response:', response);
+  return response;
 });
 
 // Custom middleware for requests (this one just logs the error).

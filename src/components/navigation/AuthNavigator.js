@@ -1,6 +1,10 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import Login from '../Login';
+import SignUp from '../SignUp';
 
-const AuthStack = createStackNavigator({ Login });
+const LoginStack = createStackNavigator({ Login });
+const SignUpStack = createStackNavigator({ SignUp });
+
+const AuthStack = createSwitchNavigator({ LoginStack, SignUpStack }, { initialRouteName: 'LoginStack' });
 
 export default AuthStack;
