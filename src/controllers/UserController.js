@@ -17,7 +17,6 @@ class UserController {
         },
       });
       return result.data.user;
-      // Data is the object exposes by axios for the response json
     } catch (error) {
       return error;
     }
@@ -32,7 +31,6 @@ class UserController {
         },
       });
       return result.data.user;
-      // Data is the object exposes by axios for the response json
     } catch (error) {
       return error;
     }
