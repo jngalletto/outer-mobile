@@ -16,9 +16,9 @@ class UserController {
           username,
         },
       });
-      return result.data.user;
+      return Promise.resolve(result.data.user);
     } catch (error) {
-      return error;
+      return Promise.reject(error);
     }
   }
 
@@ -30,9 +30,9 @@ class UserController {
           password,
         },
       });
-      return result.data.user;
+      return Promise.resolve(result.data.user);
     } catch (error) {
-      return error;
+      return Promise.reject(error);
     }
   }
 

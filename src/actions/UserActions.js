@@ -58,10 +58,8 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const user = await UserController.login(email, password);
-    debugger
     dispatch(loginSuccess(user));
   } catch (error) {
-    debugger
     dispatch(loginError(error.message));
   }
 };

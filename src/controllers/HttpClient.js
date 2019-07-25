@@ -8,7 +8,7 @@ import { API_URL } from 'react-native-dotenv';
   timeouts and middleware used for each request.
 */
 const client = axios.create({
-  baseURL: 'http://127.0.0.1:3000/api/v1',
+  baseURL: API_URL,
   transformResponse: [
     ...axios.defaults.transformResponse,
     data => humps.camelizeKeys(data),
@@ -31,14 +31,12 @@ client.interceptors.response.use((response) => {
   return response;
 });
 
-// Custom middleware for requests (this one just logs the error).
 client.interceptors.request.use(config => config, (error) => {
   console.log('Failed to make request with error:');
   console.log(error);
   return Promise.reject(error);
 });
 
-// Custom middleware for responses (this one just logs the error).
 client.interceptors.response.use(response => response, (error) => {
   console.log('Request got response with error:');
   console.log(error);
