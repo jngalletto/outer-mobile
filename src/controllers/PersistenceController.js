@@ -7,7 +7,7 @@ class PersistenceController {
     try {
       await AsyncStorage.setItem(ACCESS_TOKEN, token);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error saving ACCESS_TOKEN:', e);
     }
   }
 
@@ -19,7 +19,7 @@ class PersistenceController {
       }
       return null;
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error fetching ACCESS_TOKEN:', e);
       return null;
     }
   }
@@ -28,7 +28,7 @@ class PersistenceController {
     try {
       await AsyncStorage.removeItem(ACCESS_TOKEN);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error deleting ACCESS_TOKEN:', e);
     }
   }
 
@@ -36,7 +36,7 @@ class PersistenceController {
     try {
       await AsyncStorage.setItem(UID, uid);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error saving UID:', e);
     }
   }
 
@@ -48,7 +48,7 @@ class PersistenceController {
       }
       return null;
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error fetching UID:', e);
       return null;
     }
   }
@@ -57,7 +57,7 @@ class PersistenceController {
     try {
       await AsyncStorage.removeItem(UID);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error deleting UID:', e);
     }
   }
 
@@ -65,7 +65,7 @@ class PersistenceController {
     try {
       await AsyncStorage.setItem(CLIENT, client);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error saving CLIENT:', e);
     }
   }
 
@@ -77,7 +77,7 @@ class PersistenceController {
       }
       return null;
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error fetching CLIENT:', e);
       return null;
     }
   }
@@ -86,7 +86,7 @@ class PersistenceController {
     try {
       await AsyncStorage.removeItem(CLIENT);
     } catch (e) {
-      console.log('Error with AsyncStorage:', e);
+      console.log('Error deleting CLIENT:', e);
     }
   }
 }
