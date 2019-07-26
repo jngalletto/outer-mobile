@@ -40,12 +40,9 @@ client.interceptors.request.use(
       const uid = await PersistenceController.getUID();
       const clientKey = await PersistenceController.getClient();
       if (token && uid && clientKey) {
-        config.headers = { // eslint-disable-line no-param-reassign
-          'Content-Type': 'application/json',
-          'access-token': token,
-          client: clientKey,
-          uid,
-        };
+        config.headers.common['access-token'] = token; // eslint-disable-line no-param-reassign
+        config.headers.common.client = clientKey; // eslint-disable-line no-param-reassign
+        config.headers.common.uid = uid; // eslint-disable-line no-param-reassign
       }
       console.debug(config.url); // eslint-disable-line no-console
     } catch (error) {
@@ -60,19 +57,9 @@ client.interceptors.request.use(
   },
 );
 
-client.interceptors.response.use(response => response, (error) => {
-  console.debug('Request got response with error:'); // eslint-disable-line no-console
-  console.debug(error); // eslint-disable-line no-console
-  /*
-    Returns the first error message that came from the API if present,
-    otherwise, forwards the full error.
-  */
-  const { response } = error;
-  if (response && response.data) {
-    const { errors } = response.data;
-    const errorResponse = errors.length && errors[0];
-    return Promise.reject(errorResponse || error);
-  }
+client.interceptors.request.use(config => config, (error) => {
+  console.log('Failed to make request with error:');
+  console.log(error);
   return Promise.reject(error);
 });
 

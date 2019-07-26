@@ -56,12 +56,18 @@ class UserController {
   }
 
   logout = async () => {
-    await Promise.all([
-      PersistenceController.deleteAccessToken(),
-      PersistenceController.deleteClient(),
-      PersistenceController.deleteUID(),
-    ]);
-    Promise.resolve(null);
+    try {
+      await httpClient.delete(`${this.basePath}/sign_out`, { data: null });
+
+      await Promise.all([
+        PersistenceController.deleteAccessToken(),
+        PersistenceController.deleteClient(),
+        PersistenceController.deleteUID(),
+      ]);
+      return Promise.resolve(null);
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 }
 

@@ -3,23 +3,92 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { ACCESS_TOKEN, UID, CLIENT } from '../constants/PersistenceKeys';
 
 class PersistenceController {
-  saveAccessToken = token => AsyncStorage.setItem(ACCESS_TOKEN, token);
+  saveAccessToken = async (token) => {
+    try {
+      await AsyncStorage.setItem(ACCESS_TOKEN, token);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 
-  getAccessToken = () => AsyncStorage.getItem(ACCESS_TOKEN);
+  getAccessToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem(ACCESS_TOKEN);
+      if (value !== null) {
+        return value;
+      }
+      return null;
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+      return null;
+    }
+  }
 
-  deleteAccessToken = () => AsyncStorage.removeItem(ACCESS_TOKEN);
+  deleteAccessToken = async () => {
+    try {
+      await AsyncStorage.removeItem(ACCESS_TOKEN);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 
-  saveUID = uid => AsyncStorage.setItem(UID, uid);
+  saveUID = async (uid) => {
+    try {
+      await AsyncStorage.setItem(UID, uid);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 
-  getUID = () => AsyncStorage.getItem(UID);
+  getUID = async () => {
+    try {
+      const value = await AsyncStorage.getItem(UID);
+      if (value !== null) {
+        return value;
+      }
+      return null;
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+      return null;
+    }
+  }
 
-  deleteUID = () => AsyncStorage.removeItem(UID);
+  deleteUID = async () => {
+    try {
+      await AsyncStorage.removeItem(UID);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 
-  saveClient = client => AsyncStorage.setItem(CLIENT, client);
+  saveClient = async (client) => {
+    try {
+      await AsyncStorage.setItem(CLIENT, client);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 
-  getClient = () => AsyncStorage.getItem(CLIENT);
+  getClient = async () => {
+    try {
+      const value = await AsyncStorage.getItem(CLIENT);
+      if (value !== null) {
+        return value;
+      }
+      return null;
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+      return null;
+    }
+  }
 
-  deleteClient = () => AsyncStorage.removeItem(CLIENT);
+  deleteClient = async () => {
+    try {
+      await AsyncStorage.removeItem(CLIENT);
+    } catch (e) {
+      console.log('Error with AsyncStorage:', e);
+    }
+  }
 }
 
 export default new PersistenceController();
