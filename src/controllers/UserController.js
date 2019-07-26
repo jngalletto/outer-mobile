@@ -1,4 +1,5 @@
 import httpClient from './HttpClient';
+import PersistenceController from './PersistenceController';
 
 class UserController {
   constructor() {
@@ -16,6 +17,15 @@ class UserController {
           username,
         },
       });
+
+      const accessToken = result.headers['access-token'];
+      const { uid, client } = result.headers;
+      await Promise.all([
+        PersistenceController.saveAccessToken(accessToken),
+        PersistenceController.saveClient(client),
+        PersistenceController.saveUID(uid),
+      ]);
+
       return Promise.resolve(result.data.user);
     } catch (error) {
       return Promise.reject(error);
@@ -30,14 +40,29 @@ class UserController {
           password,
         },
       });
+
+      const accessToken = result.headers['access-token'];
+      const { uid, client } = result.headers;
+      await Promise.all([
+        PersistenceController.saveAccessToken(accessToken),
+        PersistenceController.saveClient(client),
+        PersistenceController.saveUID(uid),
+      ]);
+
       return Promise.resolve(result.data.user);
     } catch (error) {
       return Promise.reject(error);
     }
   }
 
-
-  logout = () => null;
+  logout = async () => {
+    await Promise.all([
+      PersistenceController.deleteAccessToken(),
+      PersistenceController.deleteClient(),
+      PersistenceController.deleteUID(),
+    ]);
+    Promise.resolve(null);
+  }
 }
 
 export default new UserController();
